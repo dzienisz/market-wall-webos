@@ -1,0 +1,16 @@
+{
+  "id": "io.github.dzienisz.marketwall",
+  "version": "1.0.0",
+  "vendor": "dzienisz",
+  "type": "web",
+  "main": "index.html",
+  "title": "Market Wall",
+  "appDescription": "Live markets on your TV: crypto, gold, indices and exchange rates in your currency",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "bgColor": "#000000",
+  "iconColor": "#000000",
+  "resolution": "1920x1080",
+  "disableBackHistoryAPI": true,
+  "requiredACG": []
+}

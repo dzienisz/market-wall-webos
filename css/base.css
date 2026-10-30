@@ -1,0 +1,48 @@
+@font-face { font-family: "Bricolage"; font-weight: 400; src: url("../fonts/Bricolage-400.ttf") format("truetype"); }
+@font-face { font-family: "Bricolage"; font-weight: 600; src: url("../fonts/Bricolage-600.ttf") format("truetype"); }
+@font-face { font-family: "Bricolage"; font-weight: 800; src: url("../fonts/Bricolage-800.ttf") format("truetype"); }
+
+:root {
+  /* Pure black: on an OLED those pixels are off, so the background can't burn in. */
+  --ink: #f3f5f9;
+  --muted: #7d8699;
+  --faint: #4c5363;
+  --rule: #16191f;
+  --up: #3ddc97;
+  --down: #ff5c7a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+body { color: var(--ink); font-family: "Bricolage", "LG Smart UI", Arial, sans-serif; }
+
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; padding: 52px 96px 0; transition: transform 2s ease; }
+#top { display: flex; align-items: baseline; justify-content: space-between; height: 112px; }
+#top .date { font-size: 36px; color: var(--muted); }
+#top .date b { color: var(--ink); font-weight: 600; }
+#top .time { font-size: 104px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+#view { position: relative; height: 840px; }
+#foot { position: absolute; left: 96px; right: 96px; bottom: 30px; display: flex; justify-content: space-between; font-size: 21px; color: var(--faint); }
+
+.up { color: var(--up); } .down { color: var(--down); }
+.num { font-variant-numeric: tabular-nums; }
+.waiting { color: #2a2f3a; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 360px; grid-gap: 32px; padding-top: 16px; }
+.tile {
+  position: relative; border: 2px solid #1b1f27; border-radius: 32px; padding: 36px 36px; background: #05070a;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.tile.focus { transform: scale(1.04); }
+.tile .ic svg { width: 88px; height: 88px; display: block; }
+.tile h2 { font-size: 42px; font-weight: 600; line-height: 1.05; }
+.tile p { font-size: 25px; color: var(--muted); margin-top: 8px; line-height: 1.3; }
+
+/* Shown for a few seconds after switching screens: how to move on. */
+#hint {
+  position: absolute; left: 50%; bottom: 84px; transform: translateX(-50%); padding: 14px 32px; border-radius: 40px;
+  background: #11141a; color: var(--muted); font-size: 26px; white-space: nowrap; opacity: 0; transition: opacity .4s ease;
+}
+#hint.on { opacity: 1; }
+#hint b { color: var(--ink); font-weight: 600; }
